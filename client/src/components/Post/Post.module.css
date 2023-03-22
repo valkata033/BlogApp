@@ -1,0 +1,40 @@
+.post {
+    width: 40%;
+    margin: 15px auto;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border: 1px solid black;
+    position: relative;
+}
+
+.profileImg {
+    display: inline;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 10px 10px;
+}
+
+.image {
+    position: relative;
+    width: 100%;
+}
+
+.profileName {
+    display: inline;
+    margin-left: 10px;
+}
+
+.commentBtn,
+.likeBtn {
+    color: black;
+    border-radius: 10px;
+    padding: 5px 14px;
+}
+
+.postFooter {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
