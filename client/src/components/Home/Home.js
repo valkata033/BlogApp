@@ -1,5 +1,9 @@
+import { Post } from "../Post/Post";
+
 export const Home = () => {
     return (
-        <h2>Home page!</h2>
+        <div className="content">
+            {/* <Post /> */}
+        </div>
     );
 };

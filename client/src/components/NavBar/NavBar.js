@@ -1,17 +1,18 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
-export const Header = () => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBlog } from '@fortawesome/free-solid-svg-icons'
+
+export const NavBar = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="/"><FontAwesomeIcon icon={faBlog} />  Blog App</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
                         {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">
@@ -25,6 +26,7 @@ export const Header = () => {
                         </NavDropdown> */}
                     </Nav>
                     <Nav>
+                        <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="catalog">Catalog</Nav.Link>
                         <Nav.Link href="login">Login</Nav.Link>
                         <Nav.Link href="/register">Register</Nav.Link>
