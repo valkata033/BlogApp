@@ -1,0 +1,12 @@
+
+#user, #guest{
+    display: flex;
+
+}
+
+.btnNav {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    justify-content: space-between;
+}

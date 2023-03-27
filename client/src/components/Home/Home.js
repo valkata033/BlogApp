@@ -1,9 +1,15 @@
 import { Post } from '../Post/Post';
 
-export const Home = () => {
+export const Home = ({
+    posts
+}) => {
     return (
         <div className="content">
-            <Post />
+
+            {posts.map(x => 
+                <Post key={x._id} {...x} />
+            )}
+            
         </div>
     );
 };
