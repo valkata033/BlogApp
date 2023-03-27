@@ -8,7 +8,7 @@ export const Login = ({
     onLoginSubmit
 }) => {
     const [user, setUser] = useState({
-        emailAddress: '',
+        email: '',
         password: '',
     });
 
@@ -19,7 +19,6 @@ export const Login = ({
     const onSubmit = (e) => {
         e.preventDefault();
         
-        console.log(user);
         onLoginSubmit(user);
     }
 
@@ -27,8 +26,8 @@ export const Login = ({
         <Form id={styles.loginForm} onSubmit={onSubmit} >
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" name="emailAddress" placeholder="Enter email" 
-                    value={user.emailAddress} onChange={onChangeHandler} />
+                <Form.Control type="email" name="email" placeholder="Enter email" 
+                    value={user.email} onChange={onChangeHandler} />
                 <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
                 </Form.Text>

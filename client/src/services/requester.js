@@ -35,8 +35,13 @@ const request = async (method, token, url, data) => {
     return result;
 };
 
-export const get = request.bind(null, 'GET');
-export const post = request.bind(null, 'POST');
-export const put = request.bind(null, 'PUT');
-export const patch = request.bind(null, 'PATCH');
-export const del = request.bind(null, 'DELETE');
+export const requestFactory = (token) => {
+    return {
+        get: request.bind(null, 'GET', token),
+        post: request.bind(null, 'POST', token),
+        put: request.bind(null, 'PUT', token),
+        patch: request.bind(null, 'PATCH', token),
+        del: request.bind(null, 'DELETE', token),
+    };
+}
+

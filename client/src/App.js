@@ -1,5 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { authServiceFactory } from './services/authService';
+
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { AuthContext } from './contexts/AuthContext';
@@ -9,20 +11,38 @@ import { Footer } from "./components/Footer/Footer";
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 
-import * as request from './services/authService';
 
 function App() {
+    const navigate = useNavigate();
+
     const [auth, setAuth] = useState({});
 
+    const authService = authServiceFactory(auth.accessToken);
+
+
     const onLoginSubmit = async (data) => {
-        const result = await request.login(data);
-        
-        setAuth(result);
+        try{
+            const result = await authService.login(data);
+            
+            setAuth(result);
+
+            navigate('/');
+        }
+        catch (error){
+            console.log('There is a problem');
+        }
     };
 
+    const contextValues = {
+        onLoginSubmit,
+        userId: auth._id,
+        token: auth.accessToken,
+        userEmail: auth.email,
+        isAuthenticated: !!auth.accessToken,
+    }
 
     return (
-        <AuthContext.Provider value={onLoginSubmit}>
+        <AuthContext.Provider value={contextValues}>
             <NavBar />
 
                 <main id="main-content">
