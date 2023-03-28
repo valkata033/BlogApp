@@ -12,6 +12,7 @@ import { NavBar } from "./components/NavBar/NavBar";
 import { Footer } from "./components/Footer/Footer";
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
+import { Logout } from './components/Logout/Logout';
 
 
 function App() {
@@ -43,8 +44,36 @@ function App() {
         }
     };
 
+    const onRegisterSubmit = async (data) => {
+        const {confirmPassword, ...registerData} = data;
+
+        if(confirmPassword !== registerData.password){
+            return;
+        };
+
+        try{
+            const result = await authService.register(registerData);
+
+            setAuth(result);
+
+            navigate('/');
+        }
+        catch(error) {
+            console.log('There is a problem');
+        }
+
+    };
+
+    const onLogout = async () => {
+        await authService.logout();
+
+        setAuth({});
+    };
+
     const contextValues = {
         onLoginSubmit,
+        onRegisterSubmit,
+        onLogout,
         userId: auth._id,
         token: auth.accessToken,
         userEmail: auth.email,
@@ -58,10 +87,11 @@ function App() {
                 <main id="main-content">
                     <Routes>
                         <Route path='/' element={<Home posts={posts} />} />
-                        <Route path='/catalog' element={<Home />} />
                         <Route path='/login' element={<Login onLoginSubmit={onLoginSubmit} />} />
-                        <Route path='/logout' element={<Home />} />
-                        <Route path='/register' element={<Register />} />
+                        <Route path='/logout' element={<Logout />} />
+                        <Route path='/register' element={<Register onRegisterSubmit={onRegisterSubmit} />} />
+                        <Route path='/user-info' element={<Home />} />
+                        <Route path='/create-post' element={<Home />} />
                     </Routes>
                 </main>
 

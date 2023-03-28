@@ -24,7 +24,7 @@ export const NavBar = () => {
                         <div id="user">
                             <Link className={styles.btnNav} to="/">Home</Link>
                             <Link className={styles.btnNav} to="/create-post">Create Post</Link>
-                            <Link className={styles.btnNav} to="/userInfo">{userEmail}</Link>
+                            <Link className={styles.btnNav} to="/user-info">{userEmail}</Link>
                             <Link className={styles.btnNav} to="/logout">Logout</Link>
                         </div>
                     )}

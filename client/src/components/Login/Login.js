@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import styles from './Login.module.css';
 
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 
 export const Login = ({
     onLoginSubmit
