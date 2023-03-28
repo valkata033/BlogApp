@@ -1,12 +1,12 @@
 
-#user, #guest{
-    display: flex;
-
-}
-
 .btnNav {
-    color: white;
+    color: lightgray;
     text-decoration: none;
     cursor: pointer;
-    justify-content: space-between;
+    margin: 10px;
+    font-size: large;
+}
+
+.btnNav:hover {
+    color: white;
 }
