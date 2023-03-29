@@ -1,30 +1,23 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useContext } from 'react';
+
+import { useForm } from "../../hooks/useForm";
+import { AuthContext } from '../../contexts/AuthContext';
 
 import styles from './Register.module.css';
 
-import { useState } from 'react';
 
-export const Register = ({
-    onRegisterSubmit
-}) => {
-    const [user, setUser] = useState({
+export const Register = () => {
+    
+    const {onRegisterSubmit} = useContext(AuthContext);
+    const {values, changeHandler, onSubmit} = useForm({
         firstName: '',
         lastName: '',
         email: '',
         password: '',
         confirmPassword: '',
-    });
-
-    const onChangeHandler = (e) => {
-        setUser(state => ({...state, [e.target.name]: e.target.value}));
-    };
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-
-        onRegisterSubmit(user);
-    }
+    }, onRegisterSubmit);
 
     return (
         <Form id={styles.registerForm} onSubmit={onSubmit} >
@@ -34,19 +27,19 @@ export const Register = ({
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="text" name="firstName" placeholder="Enter your first name"
-                    value={user.firstName} onChange={onChangeHandler} />
+                    value={values.firstName} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>LastName</Form.Label>
                 <Form.Control type="text" name="lastName" placeholder="Enter your last name"
-                    value={user.lastName} onChange={onChangeHandler} />
+                    value={values.lastName} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" name="email" placeholder="Enter email"
-                    value={user.email} onChange={onChangeHandler} />
+                    value={values.email} onChange={changeHandler} />
                 <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
                 </Form.Text>
@@ -55,13 +48,13 @@ export const Register = ({
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" name="password" placeholder="Password"
-                    value={user.password} onChange={onChangeHandler} />
+                    value={values.password} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control type="password" name="confirmPassword" placeholder="Confirm Password"
-                    value={user.confirmPassword} onChange={onChangeHandler} />
+                    value={values.confirmPassword} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
