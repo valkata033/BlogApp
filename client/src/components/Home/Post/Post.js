@@ -2,16 +2,20 @@ import styles from './Post.module.css';
 
 export const Post = ({
     profileImage,
-    profileName,
-    image
+    firstName,
+    lastName,
+    image,
+    description,
 }) => {
     return (
         <>
             <article className={styles.post}>
                 <div className={styles.postHeader}>
                     <img className={styles.profileImg} src={profileImage} />
-                    <p className={styles.profileName}>{profileName}</p>
+                    <p className={styles.profileName}>{`${firstName} ${lastName}`}</p>
                 </div>
+
+                <p className={styles.description}>{description}</p>
 
                 <img className={styles.image} src={image} />
 

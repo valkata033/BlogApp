@@ -13,6 +13,7 @@ import { Footer } from "./components/Footer/Footer";
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 import { Logout } from './components/Logout/Logout';
+import { CreatePost } from './components/create-post/create-post';
 
 
 function App() {
@@ -30,6 +31,14 @@ function App() {
                 setPosts(result)
             })
     }, []);
+
+    const onCreatePostSubmit = async (data) => {
+        const newPost = await postService.create(data);
+
+        setPosts(state => [...state, newPost]);
+
+        navigate('/');
+    }
 
     const onLoginSubmit = async (data) => {
         try{
@@ -91,7 +100,7 @@ function App() {
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/register' element={<Register onRegisterSubmit={onRegisterSubmit} />} />
                         <Route path='/user-info' element={<Home />} />
-                        <Route path='/create-post' element={<Home />} />
+                        <Route path='/create-post' element={<CreatePost onCreatePostSubmit={onCreatePostSubmit} />} />
                     </Routes>
                 </main>
 

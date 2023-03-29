@@ -1,10 +1,9 @@
 .post {
-    width: 40%;
-    margin: 15px auto;
+    width: 35%;
+    margin: 30px auto;
     background-color: whitesmoke;
     border-radius: 10px;
     border: 1px solid black;
-    position: relative;
 }
 
 .profileImg {
@@ -13,6 +12,12 @@
     height: 50px;
     border-radius: 50%;
     margin: 10px 10px;
+}
+
+.description {
+    margin: 10px;
+    display: inline-block;
+    overflow-wrap: anywhere;
 }
 
 .image {
@@ -24,6 +29,7 @@
 .profileName {
     display: inline;
     margin-left: 10px;
+    font-size: large;
 }
 
 .commentBtn,

@@ -9,7 +9,8 @@ export const Register = ({
     onRegisterSubmit
 }) => {
     const [user, setUser] = useState({
-        username: '',
+        firstName: '',
+        lastName: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -27,10 +28,19 @@ export const Register = ({
 
     return (
         <Form id={styles.registerForm} onSubmit={onSubmit} >
+            <h1>Register</h1>
+            <hr/>
+
             <Form.Group className="mb-3" controlId="formBasicUsername">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="username" name="username" placeholder="Enter username"
-                    value={user.username} onChange={onChangeHandler} />
+                <Form.Label>First Name</Form.Label>
+                <Form.Control type="text" name="firstName" placeholder="Enter your first name"
+                    value={user.firstName} onChange={onChangeHandler} />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicUsername">
+                <Form.Label>LastName</Form.Label>
+                <Form.Control type="text" name="lastName" placeholder="Enter your last name"
+                    value={user.lastName} onChange={onChangeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">

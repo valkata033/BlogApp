@@ -23,7 +23,10 @@ export const Login = ({
     }
 
     return (
+        
         <Form id={styles.loginForm} onSubmit={onSubmit} >
+            <h1>Login</h1>
+            <hr/>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" name="email" placeholder="Enter email" 
