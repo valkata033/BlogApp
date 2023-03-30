@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import styles from './createPost.module.css';
+import styles from './CreatePost.module.css';
 
 import { useState } from 'react';
 

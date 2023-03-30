@@ -1,7 +1,7 @@
 .post {
     width: 35%;
     margin: 30px auto;
-    background-color: whitesmoke;
+    background-color: white;
     border-radius: 10px;
     border: 1px solid black;
 }
@@ -37,6 +37,20 @@
     color: black;
     border-radius: 10px;
     padding: 5px 14px;
+}
+
+.comments {
+    background-color: #f0f2f5;
+    border-radius: 10px;
+}
+
+.comment {
+    display: inline;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    margin-bottom: 10px;
 }
 
 .postFooter {

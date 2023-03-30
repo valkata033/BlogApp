@@ -24,13 +24,13 @@ export const Register = () => {
             <h1>Register</h1>
             <hr/>
 
-            <Form.Group className="mb-3" controlId="formBasicUsername">
+            <Form.Group className="mb-3" controlId="formBasicFirstName">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="text" name="firstName" placeholder="Enter your first name"
                     value={values.firstName} onChange={changeHandler} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicUsername">
+            <Form.Group className="mb-3" controlId="formBasicLastName">
                 <Form.Label>LastName</Form.Label>
                 <Form.Control type="text" name="lastName" placeholder="Enter your last name"
                     value={values.lastName} onChange={changeHandler} />

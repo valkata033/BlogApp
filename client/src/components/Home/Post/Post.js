@@ -23,6 +23,13 @@ export const Post = ({
                     <button className={styles.likeBtn}>Like</button>
                     <button className={styles.commentBtn}>Comment</button>
                 </div>
+
+                <div hidden className={styles.comments}>
+                    <p className={styles.comment}>Hallo form there!</p>
+                    <p className={styles.comment}>Second comment</p>
+                    <p className={styles.comment}>Are be mama ti da eba idiot</p>
+                </div>
+
             </article>
 
         </>
