@@ -1,9 +1,11 @@
 import { Post } from './Post/Post';
+import { usePostContext } from '../../contexts/PostContext';
+
 import styles from './Home.module.css';
 
-export const Home = ({
-    posts
-}) => {
+export const Home = () => {
+    const { posts } = usePostContext();
+
     return (
         <div className="posts">
 

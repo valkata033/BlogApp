@@ -1,31 +1,21 @@
+import { usePostContext } from '../../contexts/PostContext';
+import { useForm } from '../../hooks/useForm';
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import styles from './CreatePost.module.css';
 
-import { useState } from 'react';
+export const CreatePost = () => {
+    const { onCreatePostSubmit } = usePostContext();
 
-export const CreatePost = ({
-    onCreatePostSubmit
-}) => {
-
-    const [post, setPost] = useState({
+    const {values, changeHandler, onSubmit} = useForm({
         firstName: '',
         lastName: '',
         profileImage: '',
         description: '',
         image: '',
-    });
-
-    const onChangeHandler = (e) => {
-        setPost(state => ({...state, [e.target.name]: e.target.value}));
-    };
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-
-        onCreatePostSubmit(post);
-    }
+    }, onCreatePostSubmit);
 
     return (
         <Form id={styles.createPostForm} onSubmit={onSubmit} >
@@ -35,31 +25,31 @@ export const CreatePost = ({
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="text" name="firstName" placeholder="Enter your first name"
-                    value={post.firstName} onChange={onChangeHandler} />
+                    value={values.firstName} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control type="text" name="lastName" placeholder="Enter your last name"
-                    value={post.lastName} onChange={onChangeHandler} />
+                    value={values.lastName} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>Profile Image</Form.Label>
                 <Form.Control type="text" name="profileImage" placeholder="Enter your profile image"
-                    value={post.profileImage} onChange={onChangeHandler} />
+                    value={values.profileImage} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>Description</Form.Label>
                 <Form.Control type="text" name="description" placeholder="Enter post description"
-                    value={post.description} onChange={onChangeHandler} />
+                    value={values.description} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>Post Image</Form.Label>
                 <Form.Control type="text" name="image" placeholder="Enter post image"
-                    value={post.image} onChange={onChangeHandler} />
+                    value={values.image} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicCheckbox">

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import * as postService from '../../services/postService';
 
 import { Post } from '../Home/Post/Post';
-import * as postService from '../../services/postService';
 
 import styles from './UserInfo.module.css';
 
