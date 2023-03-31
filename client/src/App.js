@@ -7,6 +7,7 @@ import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 import { Logout } from './components/Logout/Logout';
 import { CreatePost } from './components/CreatePost/CreatePost';
+import { EditPost } from './components/EditPost/EditPost';
 import { UserInfo } from './components/UserInfo/UserInfo';
 import { AuthProvider } from './contexts/AuthContext';
 import { PostProvider } from './contexts/PostContext';
@@ -28,8 +29,9 @@ function App() {
 
                             <Route element={<RouteGuard />}>
                                 <Route path='/logout' element={<Logout />} />
-                                <Route path='/user-info' element={<UserInfo />} />
                                 <Route path='/create-post' element={<CreatePost />} />
+                                <Route path='/user-info' element={<UserInfo />} />
+                                <Route path='/user-info/:postId/edit' element={<EditPost />} />
                             </Route>
                         </Routes>
                     </main>

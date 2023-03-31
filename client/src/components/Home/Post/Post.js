@@ -1,18 +1,28 @@
+import { Link } from 'react-router-dom';
+
 import styles from './Post.module.css';
 
 export const Post = ({
+    _id,
     profileImage,
     firstName,
     lastName,
     image,
     description,
 }) => {
+    const isUserInfo = window.location.toString().includes('user-info');
+    const isTrue = isUserInfo ? '' : 'hidden';
+
     return (
         <>
             <article className={styles.post}>
                 <div className={styles.postHeader}>
                     <img className={styles.profileImg} src={profileImage} />
                     <p className={styles.profileName}>{`${firstName} ${lastName}`}</p>
+                    <div hidden={isTrue} className={styles.editDeleteButtons}>
+                        <Link className={styles.editBtn} to={`/user-info/${_id}/edit`} >Edit</Link>
+                        <button className={styles.deleteBtn}>Delete</button>
+                    </div>
                 </div>
 
                 <p className={styles.description}>{description}</p>

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-import * as postService from '../services/postService';
+import { postServiceFactory } from '../services/postService';
 
 export const PostContext = createContext();
 
@@ -10,6 +10,7 @@ export const PostProvider = ({
 }) => {
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
+    const postService = postServiceFactory();
 
     useEffect(() => {
         postService.getAll()
@@ -26,9 +27,18 @@ export const PostProvider = ({
         navigate('/');
     };
 
+    const onPostEditSubmit = async (values) => {
+        const result = await postService.edit(values._id, values);
+
+        setPosts(state => state.map(x => x._id === values._id ? result : x));
+
+        navigate('/user-info');
+    };
+
     const contextValues = {
         posts,
         onCreatePostSubmit,
+        onPostEditSubmit,
     };
 
     return (

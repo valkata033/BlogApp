@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import * as postService from '../../services/postService';
+import { postServiceFactory } from '../../services/postService';
 
 import { Post } from '../Home/Post/Post';
 
@@ -8,6 +8,7 @@ import styles from './UserInfo.module.css';
 export const UserInfo = () => {
 
     const [posts, setPosts] = useState([]);
+    const postService = postServiceFactory();
 
     const serializedAuth = localStorage.getItem('auth');
     let userId = '';
