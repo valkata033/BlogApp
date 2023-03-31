@@ -9,20 +9,21 @@ export const Post = ({
     lastName,
     image,
     description,
+    onDeleteClick,
 }) => {
     const isUserInfo = window.location.toString().includes('user-info');
     const isTrue = isUserInfo ? '' : 'hidden';
-
+    
     return (
         <>
             <article className={styles.post}>
                 <div className={styles.postHeader}>
                     <img className={styles.profileImg} src={profileImage} />
-                    <p className={styles.profileName}>{`${firstName} ${lastName}`}</p>
+                    <Link className={styles.profileName} to='/user-info'>{`${firstName} ${lastName}`}</Link>
                     <div hidden={isTrue} className={styles.editDeleteButtons}>
                         <Link className={styles.editBtn} to={`/user-info/${_id}/edit`} >Edit</Link>
-                        <button className={styles.deleteBtn}>Delete</button>
-                    </div>
+                        <button className={styles.deleteBtn} onClick={onDeleteClick} >Delete</button>
+                    </div> 
                 </div>
 
                 <p className={styles.description}>{description}</p>

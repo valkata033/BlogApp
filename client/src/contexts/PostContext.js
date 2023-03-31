@@ -35,10 +35,15 @@ export const PostProvider = ({
         navigate('/user-info');
     };
 
+    const deletePost = (postId) => {
+        setPosts(state => state.filter(post => post._id !== postId));
+    }
+
     const contextValues = {
         posts,
         onCreatePostSubmit,
         onPostEditSubmit,
+        deletePost,
     };
 
     return (

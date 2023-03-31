@@ -30,6 +30,12 @@
     display: inline;
     margin-left: 10px;
     font-size: large;
+    text-decoration: none;
+    color: black;
+}
+
+.profileName:hover {
+    color: black;
 }
 
 .commentBtn,
@@ -62,7 +68,7 @@
 
 .editDeleteButtons {
     display: inline;
-    margin-left: 40%;
+    margin-left: 23%;
 }
 
 .comments {

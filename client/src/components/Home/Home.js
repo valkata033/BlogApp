@@ -5,7 +5,7 @@ import styles from './Home.module.css';
 
 export const Home = () => {
     const { posts } = usePostContext();
-
+    
     return (
         <div className="posts">
 

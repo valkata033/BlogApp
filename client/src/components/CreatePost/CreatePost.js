@@ -22,38 +22,34 @@ export const CreatePost = () => {
             <h1>Create Post</h1>
             <hr/>
 
-            <Form.Group className="mb-3" controlId="formBasicUsername">
-                <Form.Label>First Name</Form.Label>
+            <Form.Group className="mb-3" controlId="formBasicFirstName">
+                <Form.Label className={styles.labels}>First Name</Form.Label>
                 <Form.Control type="text" name="firstName" placeholder="Enter your first name"
                     value={values.firstName} onChange={changeHandler} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicUsername">
-                <Form.Label>Last Name</Form.Label>
+            <Form.Group className="mb-3" controlId="formBasicLastName">
+                <Form.Label className={styles.labels}>Last Name</Form.Label>
                 <Form.Control type="text" name="lastName" placeholder="Enter your last name"
                     value={values.lastName} onChange={changeHandler} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicUsername">
-                <Form.Label>Profile Image</Form.Label>
+            <Form.Group className="mb-3" controlId="formBasicProfileImage">
+                <Form.Label className={styles.labels}>Profile Image</Form.Label>
                 <Form.Control type="text" name="profileImage" placeholder="Enter your profile image"
                     value={values.profileImage} onChange={changeHandler} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicUsername">
-                <Form.Label>Description</Form.Label>
+            <Form.Group className="mb-3" controlId="formBasicDescription">
+                <Form.Label className={styles.labels}>Description</Form.Label>
                 <Form.Control type="text" name="description" placeholder="Enter post description"
                     value={values.description} onChange={changeHandler} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicUsername">
-                <Form.Label>Post Image</Form.Label>
+            <Form.Group className="mb-3" controlId="formBasicImage">
+                <Form.Label className={styles.labels}>Post Image</Form.Label>
                 <Form.Control type="text" name="image" placeholder="Enter post image"
                     value={values.image} onChange={changeHandler} />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
 
             <Button id={styles.submitBtn} variant="primary" type="submit">Submit</Button>

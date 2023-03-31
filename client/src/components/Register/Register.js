@@ -6,6 +6,7 @@ import { useForm } from "../../hooks/useForm";
 import { AuthContext } from '../../contexts/AuthContext';
 
 import styles from './Register.module.css';
+import { Link } from 'react-router-dom';
 
 
 export const Register = () => {
@@ -14,6 +15,7 @@ export const Register = () => {
     const {values, changeHandler, onSubmit} = useForm({
         firstName: '',
         lastName: '',
+        profileImage: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -25,40 +27,44 @@ export const Register = () => {
             <hr/>
 
             <Form.Group className="mb-3" controlId="formBasicFirstName">
-                <Form.Label>First Name</Form.Label>
+                <Form.Label className={styles.labels}>First Name</Form.Label>
                 <Form.Control type="text" name="firstName" placeholder="Enter your first name"
                     value={values.firstName} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicLastName">
-                <Form.Label>LastName</Form.Label>
+                <Form.Label className={styles.labels}>LastName</Form.Label>
                 <Form.Control type="text" name="lastName" placeholder="Enter your last name"
                     value={values.lastName} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label className={styles.labels}>Email address</Form.Label>
                 <Form.Control type="email" name="email" placeholder="Enter email"
                     value={values.email} onChange={changeHandler} />
-                <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicProfileImage">
+                <Form.Label className={styles.labels}>Profile Image</Form.Label>
+                <Form.Control type="text" name="profileImage" placeholder="Enter your profile image"
+                    value={values.profileImage} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
+                <Form.Label className={styles.labels}>Password</Form.Label>
                 <Form.Control type="password" name="password" placeholder="Password"
                     value={values.password} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
-                <Form.Label>Confirm Password</Form.Label>
+                <Form.Label className={styles.labels}>Confirm Password</Form.Label>
                 <Form.Control type="password" name="confirmPassword" placeholder="Confirm Password"
                     value={values.confirmPassword} onChange={changeHandler} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
+            <Form.Group className="mb-3" controlId="formBasicSignIn">
+                <Link className={styles.logIn} to='/login'>Sign in </Link>
+                <div className={styles.logIn}>from here</div>
             </Form.Group>
 
             <Button id={styles.submitBtn} variant="primary" type="submit">Submit</Button>

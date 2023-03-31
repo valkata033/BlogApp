@@ -3,3 +3,12 @@
     margin: auto;
     margin-top: 50px;
 }
+
+.register {
+    display: inline;
+    text-decoration: none;
+}
+
+.labels {
+    font-size: large;
+}

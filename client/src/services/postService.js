@@ -35,12 +35,15 @@ export const postServiceFactory = (token) => {
 
     const edit = (postId, data) => request.put(`${baseUrl}/${postId}`, data);
 
+    const deletePost = (postId) => request.delete(`${baseUrl}/${postId}`);
+
     return {
         getAll,
         getOne,
         getAllByOwnerId,
         create,
         edit,
+        delete: deletePost,
     };
 };
 

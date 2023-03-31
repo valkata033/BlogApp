@@ -27,8 +27,8 @@ function App() {
                             <Route path='/login' element={<Login />} />
                             <Route path='/register' element={<Register />} />
 
-                            <Route element={<RouteGuard />}>
                                 <Route path='/logout' element={<Logout />} />
+                            <Route element={<RouteGuard />}>
                                 <Route path='/create-post' element={<CreatePost />} />
                                 <Route path='/user-info' element={<UserInfo />} />
                                 <Route path='/user-info/:postId/edit' element={<EditPost />} />
