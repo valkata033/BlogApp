@@ -22,7 +22,7 @@ export const Post = ({
                     <Link className={styles.profileName} to='/user-info'>{`${firstName} ${lastName}`}</Link>
                     <div hidden={isTrue} className={styles.editDeleteButtons}>
                         <Link className={styles.editBtn} to={`/user-info/${_id}/edit`} >Edit</Link>
-                        <button className={styles.deleteBtn} onClick={onDeleteClick} >Delete</button>
+                        <button className={styles.deleteBtn} onClick={() => onDeleteClick(_id)} >Delete</button>
                     </div> 
                 </div>
 

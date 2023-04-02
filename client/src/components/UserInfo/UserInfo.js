@@ -25,15 +25,16 @@ export const UserInfo = () => {
             })
     }, []);
 
-    const onDeleteClick = async () => {
+    const onDeleteClick = async (postId) => {
         // eslint-disable-next-line no-restricted-globals
         const result = confirm(`Are you sure you want to delete this post?`);
 
-        console.log(posts[0]._id);
-        if (result) {
-            await postService.delete(posts._id);
+        setPosts(state => state.filter(x => x._id !== postId))
 
-            deletePost(posts._id);
+        if (result) {
+            await postService.delete(postId);
+
+            deletePost(postId);
 
             navigate('/user-info');
         }
