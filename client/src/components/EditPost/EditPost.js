@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useForm } from "../../hooks/useForm";
-import { useService } from '../../hooks/useService';
 import { usePostContext } from "../../contexts/PostContext";
-import { postServiceFactory } from "../../services/postService";
+import * as postService from "../../services/postService";
 import { useUserData } from "../../hooks/useUserData";
 
 import Button from 'react-bootstrap/Button';
@@ -14,7 +13,6 @@ export const EditPost = () => {
 
     const { onPostEditSubmit } = usePostContext();
     const { postId } = useParams();
-    const postService = useService(postServiceFactory);
     
     const {values, changeHandler, onSubmit, changeValues} = useForm({
         _id: '',

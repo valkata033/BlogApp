@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-import { postServiceFactory } from '../services/postService';
+import * as postService from '../services/postService';
 
 export const PostContext = createContext();
 
@@ -10,7 +10,6 @@ export const PostProvider = ({
 }) => {
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
-    const postService = postServiceFactory();
 
     useEffect(() => {
         postService.getAll()

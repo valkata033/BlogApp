@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -5,7 +6,6 @@ import { useForm } from "../../hooks/useForm";
 import { useAuthContext } from '../../contexts/AuthContext';
 
 import styles from './Login.module.css';
-import { Link } from 'react-router-dom';
 
 export const Login = () => {
     

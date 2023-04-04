@@ -1,4 +1,4 @@
-import { Post } from './Post/Post';
+import { Post } from '../Post/Post';
 import { usePostContext } from '../../contexts/PostContext';
 
 import styles from './Home.module.css';

@@ -2,16 +2,15 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { usePostContext } from '../../contexts/PostContext';
 import { useUserData } from '../../hooks/useUserData';
-import { postServiceFactory } from '../../services/postService';
+import * as postService from '../../services/postService';
 
-import { Post } from '../Home/Post/Post';
+import { Post } from '../Post/Post';
 
 import styles from './UserInfo.module.css';
 
 export const UserInfo = () => {
 
     const [posts, setPosts] = useState([]);
-    const postService = postServiceFactory();
 
     const { deletePost } = usePostContext();
     const navigate = useNavigate();
@@ -32,7 +31,7 @@ export const UserInfo = () => {
         setPosts(state => state.filter(x => x._id !== postId))
 
         if (result) {
-            await postService.delete(postId);
+            await postService.deletePost(postId);
 
             deletePost(postId);
 
