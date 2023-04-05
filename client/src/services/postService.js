@@ -5,7 +5,9 @@ const baseUrl = 'http://localhost:3030/data/posts';
 const request = requestFactory();
 
 export const getAll = async () => {
-    const result = await request.get(baseUrl);
+    const query = encodeURIComponent('_createdOn desc');
+    
+    const result = await request.get(`${baseUrl}?sortBy=${query}`);
     const posts = Object.values(result);
 
     return posts;
@@ -18,9 +20,10 @@ export const getOne = async (postId) => {
 };
 
 export const getAllByOwnerId = async (ownerId) => {
-    const query = encodeURIComponent(`_ownerId LIKE "${ownerId}"`);
+    const queryOwner = encodeURIComponent(`_ownerId LIKE "${ownerId}"`);
+    const querySort = encodeURIComponent('_createdOn desc');
 
-    const result = await request.get(`${baseUrl}?where=${query}`);
+    const result = await request.get(`${baseUrl}?where=${queryOwner}&sortBy=${querySort}`);
     const posts = Object.values(result);
 
     return posts;

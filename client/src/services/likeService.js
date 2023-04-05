@@ -1,6 +1,6 @@
 import { requestFactory } from './requester';
 
-const baseUrl = 'http://localhost:3030/data/comments';
+const baseUrl = 'http://localhost:3030/data/likes';
 const request = requestFactory();
 
 export const getAll = async (postId) => {
@@ -12,8 +12,8 @@ export const getAll = async (postId) => {
     return result;
 };
 
-export const create = async (postId, comment) => {
-    const result = await request.post(baseUrl, { postId, comment});
+export const create = async (postId) => {
+    const result = await request.post(baseUrl, {postId});
 
     return result;
 };

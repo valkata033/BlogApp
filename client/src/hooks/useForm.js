@@ -2,6 +2,7 @@ import { useState } from "react"
 
 export const useForm = (initialValues, onSubmitHandler) => {
     const [values, setValues] = useState(initialValues);
+    const [formErrors, setFormErrors] = useState({});
 
     const changeHandler = (e) => {
         setValues(state => ({...state, [e.target.name]: e.target.value}));
@@ -22,6 +23,7 @@ export const useForm = (initialValues, onSubmitHandler) => {
 
     return {
         values,
+        formErrors,
         changeHandler,
         onSubmit,
         changeValues,

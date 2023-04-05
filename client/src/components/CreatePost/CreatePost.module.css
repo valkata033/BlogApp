@@ -1,9 +1,14 @@
 #createPostForm {
     max-width: 40%;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 .labels {
     font-size: large;
+}
+
+.errors {
+    color: red;
 }
