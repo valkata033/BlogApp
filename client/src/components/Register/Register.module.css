@@ -13,3 +13,9 @@
 .labels {
     font-size: large;
 }
+
+.error {
+    color: red;
+    font-size: large;
+    margin-bottom: 16px;
+}

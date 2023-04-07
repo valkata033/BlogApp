@@ -14,7 +14,7 @@ export const EditPost = () => {
     const { onPostEditSubmit } = usePostContext();
     const { postId } = useParams();
     
-    const {values, changeHandler, onSubmit, changeValues} = useForm({
+    const {values, formErrors, changeHandler, onSubmit, changeValues} = useForm({
         _id: '',
         description: '',
         image: '',
@@ -33,6 +33,7 @@ export const EditPost = () => {
         <Form id={styles.createPostForm} onSubmit={onSubmit} >
             <h1>Edit Post</h1>
             <hr/>
+            <div className={styles.errors}>{formErrors.message}</div>
 
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label className={styles.labels}>First Name</Form.Label>

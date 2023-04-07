@@ -27,10 +27,10 @@ export const UserInfo = () => {
     const onDeleteClick = async (postId) => {
         // eslint-disable-next-line no-restricted-globals
         const result = confirm(`Are you sure you want to delete this post?`);
-
-        setPosts(state => state.filter(x => x._id !== postId))
-
+        
         if (result) {
+            setPosts(state => state.filter(x => x._id !== postId))
+
             await postService.deletePost(postId);
 
             deletePost(postId);

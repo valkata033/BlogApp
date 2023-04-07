@@ -1,19 +1,29 @@
-
 .label {
-    text-align: center;
     font-size: large;
 }
 
-.input {
-   margin-left: 80px;
-   margin-bottom: 5px;
-   border-radius: 8px;
+.errorLabel {
+    color: red;
+    font-size: large;
 }
 
-.addBtn {
-    margin-left: 15px;
-    margin-bottom: 5px;
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input {
+   margin-bottom: 15px;
+   border-radius: 8px;
+   max-width: 70%;
+}
+
+.submitBtn {
     color: black;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 5px 14px;
+    text-align: center;
 }

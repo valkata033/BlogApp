@@ -7,3 +7,8 @@
 .labels {
     font-size: large;
 }
+
+.errors {
+    font-size: large;
+    color: red;
+}

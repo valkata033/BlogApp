@@ -11,4 +11,6 @@
 
 .errors {
     color: red;
+    font-size: large;
+    margin-bottom: 16px;
 }

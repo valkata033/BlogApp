@@ -12,6 +12,7 @@ export const AuthProvider = ({
     const navigate = useNavigate();
 
     const [auth, setAuth] = useLocalStorage('auth', {});
+    const [errors, setErrors] = useState({});
 
     const onLoginSubmit = async (data) => {
         try{
@@ -19,10 +20,11 @@ export const AuthProvider = ({
             
             setAuth(result);
 
+            setErrors({});
             navigate('/');
         }
         catch (error){
-            console.log('There is a problem');
+            setErrors(error);
         }
     };
 
@@ -30,6 +32,7 @@ export const AuthProvider = ({
         const {confirmPassword, ...registerData} = data;
 
         if(confirmPassword !== registerData.password){
+            setErrors({message: 'Password and confirm password don\'t match!'});
             return;
         };
 
@@ -38,10 +41,11 @@ export const AuthProvider = ({
 
             setAuth(result);
 
+            setErrors({});
             navigate('/');
         }
         catch(error) {
-            console.log('There is a problem');
+            setErrors(error);
         }
 
     };
@@ -56,6 +60,7 @@ export const AuthProvider = ({
         onLoginSubmit,
         onRegisterSubmit,
         onLogout,
+        errors: errors,
         userId: auth._id,
         token: auth.accessToken,
         userEmail: auth.email,

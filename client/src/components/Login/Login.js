@@ -9,8 +9,8 @@ import styles from './Login.module.css';
 
 export const Login = () => {
     
-    const { onLoginSubmit } = useAuthContext();
-    const { values, changeHandler, onSubmit } = useForm({
+    const { onLoginSubmit, errors } = useAuthContext();
+    const { values, formErrors, changeHandler, onSubmit } = useForm({
         email: '',
         password: '',
     }, onLoginSubmit);
@@ -20,6 +20,8 @@ export const Login = () => {
         <Form id={styles.loginForm} onSubmit={onSubmit} >
             <h1>Login</h1>
             <hr/>
+            <div className={styles.error}>{errors.message}</div>
+            <div className={styles.error}>{formErrors.message}</div>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className={styles.labels}>Email address</Form.Label>

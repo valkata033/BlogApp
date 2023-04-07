@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom';
 
 export const Register = () => {
     
-    const {onRegisterSubmit} = useContext(AuthContext);
-    const {values, changeHandler, onSubmit} = useForm({
+    const {onRegisterSubmit, errors} = useContext(AuthContext);
+    const {values, formErrors, changeHandler, onSubmit} = useForm({
         firstName: '',
         lastName: '',
         profileImage: '',
@@ -25,6 +25,8 @@ export const Register = () => {
         <Form id={styles.registerForm} onSubmit={onSubmit} >
             <h1>Register</h1>
             <hr/>
+            <div className={styles.error}>{errors.message}</div>
+            <div className={styles.error}>{formErrors.message}</div>
 
             <Form.Group className="mb-3" controlId="formBasicFirstName">
                 <Form.Label className={styles.labels}>First Name</Form.Label>

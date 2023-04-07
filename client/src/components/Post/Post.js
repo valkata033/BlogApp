@@ -6,6 +6,7 @@ import { AddComment } from './AddComment/AddComment';
 import * as commentService from '../../services/commentService';
 import * as likeService from '../../services/likeService';
 import { useUserData } from '../../hooks/useUserData';
+import { useForm } from '../../hooks/useForm';
 
 import styles from './Post.module.css';
 
@@ -22,6 +23,7 @@ export const Post = ({
     const [post, setPost] = useState({});
     const [comments, setComments] = useState('hidden');
     const { userId } = useUserData();
+    const { formErrors } = useForm({comment: ''});
 
     const isUserInfo = window.location.toString().includes('user-info');
     const isTrue = isUserInfo ? '' : 'hidden';
@@ -60,7 +62,7 @@ export const Post = ({
 
     const onLikeSubmit = async () => {
         const likes = await likeService.getAll(_id);
-
+        
         if (likes && likes.find(x => x._ownerId === userId)){
             return;
         }

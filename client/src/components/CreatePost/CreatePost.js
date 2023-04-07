@@ -21,6 +21,7 @@ export const CreatePost = () => {
         <Form id={styles.createPostForm} onSubmit={onSubmit} >
             <h1>Create Post</h1>
             <hr />
+            <div className={styles.errors}>{formErrors.message}</div>
 
             <Form.Group className="mb-3" controlId="formBasicFirstName">
                 <Form.Label className={styles.labels}>First Name</Form.Label>

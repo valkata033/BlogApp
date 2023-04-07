@@ -10,6 +10,7 @@ export const PostProvider = ({
 }) => {
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
+    const [formErrors, setFormErrors] = useState({});
 
     useEffect(() => {
         postService.getAll()
@@ -19,19 +20,31 @@ export const PostProvider = ({
     }, []);
 
     const onCreatePostSubmit = async (data) => {
-        const newPost = await postService.create(data);
+        try {
+            const newPost = await postService.create(data);
 
-        setPosts(state => [...state, newPost]);
+            setPosts(state => [...state, newPost]);
 
-        navigate('/');
+            navigate('/');
+        } 
+        catch (error) {
+            //setFormErrors(error);
+            console.log(error);
+        }
     };
 
     const onPostEditSubmit = async (values) => {
-        const result = await postService.edit(values._id, values);
+        try {
+            const result = await postService.edit(values._id, values);
 
-        setPosts(state => state.map(x => x._id === values._id ? result : x));
+            setPosts(state => state.map(x => x._id === values._id ? result : x));
 
-        navigate('/user-info');
+            navigate('/user-info');
+        } 
+        catch (error) {
+            //setFormErrors(error);
+            console.log(error);
+        }
     };
 
     const deletePost = (postId) => {
@@ -40,6 +53,7 @@ export const PostProvider = ({
 
     const contextValues = {
         posts,
+        formErrors,
         onCreatePostSubmit,
         onPostEditSubmit,
         deletePost,
