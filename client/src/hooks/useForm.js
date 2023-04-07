@@ -4,7 +4,6 @@ export const useForm = (initialValues, onSubmitHandler) => {
     const [values, setValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const pattern = new RegExp('^[A-z]+[\d._-]*[A-z]*[@][A-z]+[.][A-z]+$');
-    // const pattern = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6}$");;
     
     const changeHandler = (e) => {
         setValues(state => ({...state, [e.target.name]: e.target.value}));

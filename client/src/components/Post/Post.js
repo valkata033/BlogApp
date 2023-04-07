@@ -2,11 +2,10 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAuthContext } from '../../contexts/AuthContext';
-import { AddComment } from './AddComment/AddComment';
+import { useUserData } from '../../hooks/useUserData';
 import * as commentService from '../../services/commentService';
 import * as likeService from '../../services/likeService';
-import { useUserData } from '../../hooks/useUserData';
-import { useForm } from '../../hooks/useForm';
+import { AddComment } from './AddComment/AddComment';
 
 import styles from './Post.module.css';
 
@@ -22,8 +21,7 @@ export const Post = ({
     const { isAuthenticated } = useAuthContext();
     const [post, setPost] = useState({});
     const [comments, setComments] = useState('hidden');
-    const { userId } = useUserData();
-    const { formErrors } = useForm({comment: ''});
+    const { userId, authFirstName, authLastName } = useUserData();
 
     const isUserInfo = window.location.toString().includes('user-info');
     const isTrue = isUserInfo ? '' : 'hidden';
@@ -51,7 +49,6 @@ export const Post = ({
     };
     
     const onCommentClick = () => {
-
         if (comments === ''){
             setComments('hidden');
         }
@@ -64,6 +61,11 @@ export const Post = ({
         const likes = await likeService.getAll(_id);
         
         if (likes && likes.find(x => x._ownerId === userId)){
+            await likeService.deleteLike(likes.find(x => x._ownerId === userId)._id);
+            setPost(state => ({
+                ...state,
+                likes: [...state.likes.filter(like => like._id !== likes.find(x => x._ownerId === userId)._id)]
+            }));
             return;
         }
 
@@ -72,7 +74,7 @@ export const Post = ({
         setPost(state => ({
             ...state,
             likes: [...state.likes, response]
-        }))
+        }));
     };
 
     return (
@@ -104,7 +106,7 @@ export const Post = ({
 
                     {post.comments && post.comments.map(x => (
                         <p key={x._id} className={styles.comment}>
-                            {x.author?.firstName} {x.author?.lastName}: {x.comment}
+                            {x.author ? x.author?.firstName : authFirstName} {x.author ? x.author?.lastName : authLastName}: {x.comment}
                         </p>
                     ))}
 

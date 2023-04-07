@@ -17,3 +17,5 @@ export const create = async (postId) => {
 
     return result;
 };
+
+export const deleteLike = async (likeId) => await request.delete(`${baseUrl}/${likeId}`); 

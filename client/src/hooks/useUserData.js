@@ -2,22 +2,22 @@
 export const useUserData = () => {
     const serializedAuth = localStorage.getItem('auth');
     let userId = '';
-    let firstName = '';
-    let lastName = '';
-    let profileImage = '';
+    let authFirstName = '';
+    let authLastName = '';
+    let authProfileImage = '';
 
     if (serializedAuth) {
         const auth = JSON.parse(serializedAuth);
         userId = auth._id;
-        firstName = auth.firstName;
-        lastName = auth.lastName;
-        profileImage = auth.profileImage;
+        authFirstName = auth.firstName;
+        authLastName = auth.lastName;
+        authProfileImage = auth.profileImage;
     }
 
     return {
         userId,
-        firstName,
-        lastName,
-        profileImage
+        authFirstName: authFirstName,
+        authLastName: authLastName,
+        authProfileImage: authProfileImage
     };
 };
