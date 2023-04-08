@@ -28,8 +28,7 @@ export const PostProvider = ({
             navigate('/');
         } 
         catch (error) {
-            //setFormErrors(error);
-            console.log(error);
+            setFormErrors(error);
         }
     };
 
@@ -42,8 +41,7 @@ export const PostProvider = ({
             navigate('/user-info');
         } 
         catch (error) {
-            //setFormErrors(error);
-            console.log(error);
+            setFormErrors(error);
         }
     };
 

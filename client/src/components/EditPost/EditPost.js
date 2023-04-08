@@ -27,7 +27,7 @@ export const EditPost = () => {
             });
     }, [postId]);
 
-    const { firstName, lastName, profileImage } = useUserData();
+    const { authFirstName, authLastName, authProfileImage } = useUserData();
 
     return (
         <Form id={styles.createPostForm} onSubmit={onSubmit} >
@@ -38,19 +38,19 @@ export const EditPost = () => {
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label className={styles.labels}>First Name</Form.Label>
                 <Form.Control type="text" name="firstName" placeholder="Enter your first name"
-                    value={firstName} onChange={changeHandler} />
+                    value={authFirstName} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label className={styles.labels}>Last Name</Form.Label>
                 <Form.Control type="text" name="lastName" placeholder="Enter your last name"
-                    value={lastName} onChange={changeHandler} />
+                    value={authLastName} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label className={styles.labels}>Profile Image</Form.Label>
                 <Form.Control type="text" name="profileImage" placeholder="Enter your profile image"
-                    value={profileImage} onChange={changeHandler} />
+                    value={authProfileImage} onChange={changeHandler} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicUsername">

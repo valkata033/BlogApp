@@ -15,7 +15,7 @@ export const UserInfo = () => {
     const { deletePost } = usePostContext();
     const navigate = useNavigate();
 
-    const { userId, firstName, lastName, profileImage } = useUserData();
+    const { userId, authFirstName, authLastName, authProfileImage } = useUserData();
 
     useEffect(() => {
         postService.getAllByOwnerId(userId)
@@ -43,8 +43,8 @@ export const UserInfo = () => {
         <div className="user-posts">
 
             <div className={styles.profile}>
-                <img className={styles.profileImg} src={profileImage} />
-                <p className={styles.profileName}>{`${firstName} ${lastName}`}</p>
+                <img className={styles.profileImg} src={authProfileImage} />
+                <p className={styles.profileName}>{`${authFirstName} ${authLastName}`}</p>
             </div>
 
             {posts.map(x => 
