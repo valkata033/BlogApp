@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import { useAuthContext } from '../../contexts/AuthContext';
@@ -23,6 +24,7 @@ export const Post = ({
     const [comments, setComments] = useState('hidden');
     const { userId, authFirstName, authLastName } = useUserData();
 
+    const navigate = useNavigate();
     const isUserInfo = window.location.toString().includes('user-info');
     const isTrue = isUserInfo ? '' : 'hidden';
 
@@ -58,6 +60,11 @@ export const Post = ({
     };
 
     const onLikeSubmit = async () => {
+        if(!isAuthenticated){
+            navigate('/login');
+            return
+        }
+
         const likes = await likeService.getAll(_id);
         
         if (likes && likes.find(x => x._ownerId === userId)){
